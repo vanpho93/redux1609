@@ -18,11 +18,20 @@ const reducer = (state = defaultState, action) => {
         const { en } = action;
         return { words: state.words.filter(word => word.en !== en) };
     }
+    if (action.type === 'TOGGLE_FORGOT') {
+        const { en } = action;
+        return { 
+            words: state.words.map(word => {
+                if (word.en != en) return word;
+                return { ...word, isMemorized: !word.isMemorized };
+            })
+        };
+    }
     return state;
 }
 
 const store = createStore(reducer);
 
-// store.dispatch({ type: 'REMOVE_WORD', en: 'afternoon' });
+// store.dispatch({ type: 'TOGGLE_FORGOT', en: 'afternoon' });
 
 export default store;

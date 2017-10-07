@@ -5,11 +5,19 @@ class Word extends Component {
     constructor(props) {
         super(props);
         this.removeWord = this.removeWord.bind(this);
+        this.toggleForgot = this.toggleForgot.bind(this);
     }
+    
     removeWord() {
         const { dispatch, en } = this.props;
         dispatch({ type: 'REMOVE_WORD', en });
     }
+
+    toggleForgot() {
+        const { dispatch, en } = this.props;
+        dispatch({ type: 'TOGGLE_FORGOT', en });
+    }
+
     render() {
         const { vn, en, isMemorized } = this.props;
         const color = isMemorized ? 'green' : 'red';
@@ -21,7 +29,7 @@ class Word extends Component {
                     <button className="btn btn-danger" onClick={this.removeWord}>
                         remove
                     </button>
-                    <button className="btn btn-warning">
+                    <button className="btn btn-warning" onClick={this.toggleForgot}>
                         forgot
                     </button>
                 </div>

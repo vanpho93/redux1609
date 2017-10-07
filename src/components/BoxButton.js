@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import Button from './Button';
 
 class BoxButton extends Component {
   render() {
-    const { onAdd } = this.props;
     return (
-        <button className="btn btn-primary" onClick={onAdd}>
-            Add
-        </button>
+        <div>
+          <Button onAdd2={this.props.onAdd} />
+        </div>
     );
   }
 }

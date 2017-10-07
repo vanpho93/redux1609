@@ -14,11 +14,15 @@ const reducer = (state = defaultState, action) => {
         const word = { en, vn, isMemorized };
         return { words: state.words.concat(word) };
     }
+    if (action.type === 'REMOVE_WORD') {
+        const { en } = action;
+        return { words: state.words.filter(word => word.en !== en) };
+    }
     return state;
 }
 
 const store = createStore(reducer);
 
-// store.dispatch({ type: 'ADD_WORD' });
+// store.dispatch({ type: 'REMOVE_WORD', en: 'afternoon' });
 
 export default store;

@@ -1,9 +1,14 @@
 import { createStore } from 'redux';
-const defaultState = { value: 0 };
+
+const defaultState = { 
+    words: [
+        { en: 'hello', vn: 'xin chào', isMemorized: false },
+        { en: 'good morning', vn: 'chào buổi sáng', isMemorized: true },
+        { en: 'afternoon', vn: 'buổi chiều', isMemorized: false },
+    ]
+};
 
 const reducer = (state = defaultState, action) => {
-    if (action.type === 'ADD') return { value: state.value + 1 };
-    if (action.type === 'SUB') return { value: state.value - 1 };
     return state;
 }
 

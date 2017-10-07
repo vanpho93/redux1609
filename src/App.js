@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import Box from './components/Box';
+import Word from './components/Word';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h3>React Redux</h3>
-        <Box />
+        <Word en="Hello" vn="Xin chao" isMemorized />
       </div>
     );
   }

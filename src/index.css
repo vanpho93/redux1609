@@ -3,3 +3,11 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+
+.word {
+  border: 1px solid #ECECEC;;
+  padding: 10px;
+  margin: 10px;
+  background-color: #F2F2F2;
+  width:300px;
+}

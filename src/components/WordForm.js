@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+function addWord(en, vn, isMemorized) {
+    return { type: 'ADD_WORD', en, vn, isMemorized };
+}
+
+function toggleForm() {
+    return { type: 'TOGGLE_FORM' };
+}
+
 class WordForm extends Component {
     constructor(props) {
         super(props);
@@ -9,20 +17,20 @@ class WordForm extends Component {
     }
 
     addWord() {
-        const { dispatch } = this.props;
         const en = this.refs.txtEn.value;
         const vn = this.refs.txtVn.value;
         const isMemorized = this.refs.cbMemorized.checked;
-        dispatch({ type: 'ADD_WORD', en, vn, isMemorized });
-        dispatch({ type: 'TOGGLE_FORM' });        
+        this.props.addWord(en, vn, isMemorized);
+        this.props.toggleForm();     
         this.refs.txtEn.value = '';
         this.refs.txtVn.value = '';
         this.refs.cbMemorized.checked = false;
     }
 
     toggleForm() {
-        const { dispatch } = this.props;
-        dispatch({ type: 'TOGGLE_FORM' });        
+        // const { dispatch } = this.props;
+        // dispatch(toggleForm());       
+        this.props.toggleForm(); 
     }
 
     render() {
@@ -57,4 +65,4 @@ class WordForm extends Component {
 
 const mapState = state => ({ isShowForm: state.isShowForm });
 
-export default connect(mapState)(WordForm);
+export default connect(mapState, { toggleForm, addWord })(WordForm);

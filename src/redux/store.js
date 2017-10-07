@@ -9,9 +9,16 @@ const defaultState = {
 };
 
 const reducer = (state = defaultState, action) => {
+    if (action.type === 'ADD_WORD') {
+        const { en, vn, isMemorized } = action;
+        const word = { en, vn, isMemorized };
+        return { words: state.words.concat(word) };
+    }
     return state;
 }
 
 const store = createStore(reducer);
+
+// store.dispatch({ type: 'ADD_WORD' });
 
 export default store;

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import BoxButton from './BoxButton';
+import { connect } from 'react-redux';
 
 class Box extends Component {
     render() {
         return (
             <div>
-                <h3>0</h3>
+                <h3>{ this.props.val }</h3>
                 <BoxButton />
             </div>
         );
     }
 }
 
-export default Box;
+export default connect(state => ({ val: state.value }))(Box);

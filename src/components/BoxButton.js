@@ -5,7 +5,7 @@ class BoxButton extends Component {
   render() {
     return (
         <div>
-          <Button onAdd2={this.props.onAdd} />
+          <Button />
         </div>
     );
   }

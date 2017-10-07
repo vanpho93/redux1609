@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-function addWord(en, vn, isMemorized) {
-    return { type: 'ADD_WORD', en, vn, isMemorized };
-}
-
-function toggleForm() {
-    return { type: 'TOGGLE_FORM' };
-}
+import * as actionCreators from '../redux/actionCreators';
 
 class WordForm extends Component {
     constructor(props) {
@@ -65,4 +58,4 @@ class WordForm extends Component {
 
 const mapState = state => ({ isShowForm: state.isShowForm });
 
-export default connect(mapState, { toggleForm, addWord })(WordForm);
+export default connect(mapState, actionCreators)(WordForm);

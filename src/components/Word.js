@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 class Word extends Component {
     constructor(props) {
@@ -9,13 +8,9 @@ class Word extends Component {
     }
     
     removeWord() {
-        const { dispatch, en } = this.props;
-        dispatch({ type: 'REMOVE_WORD', en });
     }
 
     toggleForgot() {
-        const { dispatch, en } = this.props;
-        dispatch({ type: 'TOGGLE_FORGOT', en });
     }
 
     render() {
@@ -38,4 +33,4 @@ class Word extends Component {
     }
 }
 
-export default connect()(Word);
+export default Word;

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actionCreators from '../redux/actionCreators';
 
 class WordForm extends Component {
     constructor(props) {
@@ -10,29 +8,15 @@ class WordForm extends Component {
     }
 
     addWord() {
-        const en = this.refs.txtEn.value;
-        const vn = this.refs.txtVn.value;
-        const isMemorized = this.refs.cbMemorized.checked;
-        this.props.addWord(en, vn, isMemorized);
-        this.props.toggleForm();     
-        this.refs.txtEn.value = '';
-        this.refs.txtVn.value = '';
-        this.refs.cbMemorized.checked = false;
     }
 
     toggleForm() {
-        // const { dispatch } = this.props;
-        // dispatch(toggleForm());       
-        this.props.toggleForm(); 
     }
 
     render() {
-        const { isShowForm } = this.props;
-        const formStyle = isShowForm ? {} : { display: 'none' };
-        const buttonStyle = isShowForm ? { display: 'none' } : {};
         return (
             <div>
-                <div className="word-form" style={formStyle}>
+                <div className="word-form">
                     <input className="form-control" placeholder="English" ref="txtEn" />
                     <br />
                     <input className="form-control" placeholder="Vietnamese" ref="txtVn" />
@@ -48,14 +32,9 @@ class WordForm extends Component {
                         </button>
                     </div>
                 </div>
-                <button className="btn btn-warning" style={buttonStyle} onClick={this.toggleForm}>
-                    Show Form
-                </button>
             </div>
         );
     }
 }
 
-const mapState = state => ({ isShowForm: state.isShowForm });
-
-export default connect(mapState, actionCreators)(WordForm);
+export default WordForm;
